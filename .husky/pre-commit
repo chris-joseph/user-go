@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+make gendocs
+git add docs/__swagger.yaml docs/__index.html
+npx lint-staged

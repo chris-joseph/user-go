@@ -1,0 +1,29 @@
+{
+  "name": "go-template-be-api",
+  "version": "1.0.0",
+  "description": "Template to create backend API repositories in Golang",
+  "scripts": {
+    "prepare": "husky install",
+    "commit": "git cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smallcase/go-template-be-api.git"
+  },
+  "lint-staged": {
+    "./**/*": [
+      "make all"
+    ]
+  },
+  "keywords": [],
+  "author": "Shabd Saran",
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.2",
+    "@commitlint/config-conventional": "^17.4.2",
+    "commitizen": "^4.3.0",
+    "commitlint": "^17.4.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.1"
+  }
+}
