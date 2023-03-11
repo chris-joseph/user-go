@@ -1,0 +1,96 @@
+openapi: "3.1.0"
+
+info:
+  title: Golang Template - BE API
+  version: "v1.0.0"
+
+servers:
+  - url: https://go.sample.smallcase.com
+
+tags:
+  - name: binotto
+    description: Sample Binotto APIs
+
+paths:
+  /register:
+    post:
+      summary: Create New Binotto
+      description: Create a new Binotto from nothing... like magic!
+      operationId: createBinotto
+      tags:
+        - binotto
+      security:
+        - {} # No Auth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - pan
+                - dob
+                - phoneNumber
+                - email
+              properties:
+                pan:
+                  type: string
+                dob:
+                  type: string
+                  format: date
+                  description: YYYY-MM-DD
+                phoneNumber:
+                  type: string
+                  description: Phone number must follow the international format
+                  example: +91-9876543210
+                email:
+                  type: string
+                  format: email
+      responses:
+        201:
+          description: New Binotto created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                  - success
+                  - data
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                  data:
+                    type: object
+                    required:
+                      - id
+                      - repositories
+                    properties:
+                      id:
+                        type: string
+
+  /repository:
+    get:
+      summary: Fetch existing Binotto
+      description: Fetch all the existing Binottos
+      operationId: fetchBinottos
+      tags:
+        - binotto
+      security:
+        - {} # No Auth
+      responses:
+        200:
+          description: Returned all the active repositories
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                  - success
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
